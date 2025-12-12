@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "CcjjTRqF2qbehXbpt9ZN4eVfr/2WfmWLbFsRFPBGbOE=",
+  "Source": "testing-deploy",
+  "BasePath": "_content/testing-deploy",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
