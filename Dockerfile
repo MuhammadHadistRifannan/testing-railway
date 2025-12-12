@@ -1,15 +1,19 @@
-# Build stage
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+# STAGE 1 — BUILD
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 COPY . .
-RUN dotnet publish -c Release -o /out
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/publish
 
-# Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+# STAGE 2 — RUNTIME
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
-COPY --from=build /out .
-ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+# Render pakai port 8080
+ENV ASPNETCORE_URLS=http://+:8080
 
-CMD ["dotnet", "testing-deploy.dll"]
+COPY --from=build /app/publish .
+EXPOSE 8080
+
+ENTRYPOINT ["dotnet", "testing-deploy.dll"]
