@@ -12,4 +12,4 @@ WORKDIR /app
 COPY --from=build /out .
 ENV ASPNETCORE_URLS=http://0.0.0.0:8080
 
-CMD ["dotnet", "Testingdeploy.dll"]
+CMD ["dotnet", "testing-deploy.dll"]
